@@ -1,9 +1,6 @@
-import styled, { createGlobalStyle } from 'styled-components'
-
 export default createGlobalStyle`
   :root {
     --dark: #313131;
-
   }
 
   * {
@@ -15,7 +12,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html {
+  html, body {
+    height: 100%; /* Garante que o body ocupe toda a altura da janela */
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
   }
@@ -24,12 +22,4 @@ export default createGlobalStyle`
     font-size: 1rem;
     color: var(--dark);
   } 
-  
-  `
-
-  export const ContainerDiv = styled.div`
-        display: flex;
-        width:100vh;
-        height: 100%;
-
-  `
+`;

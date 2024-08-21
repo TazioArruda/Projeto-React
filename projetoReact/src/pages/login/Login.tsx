@@ -1,29 +1,22 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import { CreateAppContext } from '../../contexts/AppController';
+import { loginUser } from '../../services/loginUser';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { CheckboxWrapper, Container, ImageWrapper, InputField, InputWrapper, Label, LoginBox, LoginContainer, SubmitButton, Title } from './LoginStyles';
 
-import {
-  Container,
-  ImageWrapper,
-  LoginContainer,
-  LoginBox,
-  Title,
-  InputWrapper,
-  InputField,
-  Label,
-  CheckboxWrapper,
-  SubmitButton,
-} from './LoginStyles';
-import { LoginProps, loginUser } from '../../services/loginUser';
-import { CreateAppContext } from '../../contexts/AppController';
+// Define a tipagem para os valores do formulário
+interface FormValues {
+  email: string;
+  password: string;
+}
 
 const Login: React.FC = () => {
   const { data, userLoged } = useContext(CreateAppContext);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<FormValues>();
   const navigate = useNavigate();
 
-  const handleClick = async ({ email, password }: LoginProps) => {
+  const handleClick: SubmitHandler<FormValues> = async ({ email, password }) => {
     await loginUser({ email, password });
     userLoged();
 
@@ -34,9 +27,6 @@ const Login: React.FC = () => {
 
   return (
     <Container>
-      <ImageWrapper>
-        <img src="/mnt/data/Frame 61 (3).png" alt="Promotional" />
-      </ImageWrapper>
       <LoginContainer>
         <LoginBox>
           <Title>
@@ -44,23 +34,32 @@ const Login: React.FC = () => {
             <h1>Realize seu login</h1>
           </Title>
           <InputWrapper>
+          
             <form onSubmit={handleSubmit(handleClick)}>
-              <InputField
-                {...register('email')}
-                type="email"
-                name="email"
-                id="email"
-              />
-              <Label htmlFor="email">Nome</Label>
-
-              <InputField
-                {...register('password')}
-                type="password"
-                name="password"
-                id="password"
-              />
-              <Label htmlFor="password">Senha</Label>
-
+              <div className="relative">
+              
+                <InputField
+                  {...register('email')}
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder=" "
+                />
+                  <Label htmlFor="email">Nome</Label>
+              </div>
+            
+              <div className="relative">
+              
+                <InputField
+                  {...register('password')}
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder=" "
+                />
+                <Label htmlFor="password">Senha</Label>
+              </div>
+             
               <CheckboxWrapper>
                 <div>
                   <input type="checkbox" name="reminder" id="reminder" />
@@ -74,6 +73,7 @@ const Login: React.FC = () => {
           </InputWrapper>
         </LoginBox>
       </LoginContainer>
+      <ImageWrapper />
     </Container>
   );
 };

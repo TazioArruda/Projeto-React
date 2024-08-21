@@ -1,27 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import App from './App'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Login from './pages/login/Login'
 
-//import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-//import Home from './pages/home.tsx'
-//import Dashboard from './pages/dashbord.tsx'
-//import Faq from './pages/faq.tsx'
-//import Login from './components/Indexlogin.tsx'
-//import App from './App.tsx'
-//import RegisterUsers from './pages/registerUsers.tsx'
-//import Plans from './pages/plans.tsx'
-//import { Doctors } from './components/Plans/doctors.tsx'
-//import { Contractors } from './components/Plans/contractors.tsx'
-//import Login from './pages/login.tsx'
+import RegisterUsers from './pages/register/registerUsers.tsx'
+import { Doctors } from './components/Plans/Doctors.tsx'
+import { Contractors } from './components/Plans/Contractors.tsx'
+import Dashboard from './pages/dashBoard/Dashbord.tsx'
+import Predicoes from './pages/predicoes/Predicoes.tsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
-      {
-        path: '/',
-        element: <Home/>
-      },
       {
         path: '/dashboard',
         element: <Dashboard />
@@ -31,25 +24,20 @@ const router = createBrowserRouter([
         element:<RegisterUsers/>
       },
       {
-        path: '/plans',
-        element:<Plans/>,
+        path: '/predicoes',
+        element:<Predicoes/>,
         children:[
           {
-            path:"/plans/doctors",
+            path:"/predicoes/doctors",
             element:<Doctors/>
           },
           {
-            path:"/plans/contractors",
+            path:"/predicoes/contractors",
             element:<Contractors/>
           }
         ]
         
-      },
-      {
-        path: '/faq',
-        element: <Faq />
-      },
-      
+      }, 
     ]
   },
 
