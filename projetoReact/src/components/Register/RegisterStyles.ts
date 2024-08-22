@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 1848px;
   height: 450px;
   margin: 1.5rem 6rem;
-  padding: 1.5rem 0;
+  padding: 1.50rem 0;
 `;
 
 export const Header = styled.div`

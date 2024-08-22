@@ -5,8 +5,8 @@ import styled from 'styled-components';
 // de 32px ao redor e um espaço (gap) de 24px entre os elementos filhos.
 export const Container = styled.div`
   display: flex;
-  background-color: red;
-  width: 100%;
+  background-color: #FFFFFF;
+  width: 94%;
   padding: 32px;
   gap: 24px;
 `;

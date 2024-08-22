@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
-background-color: black;
+background-color: #FFFFFF;
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   height: 100px;
-  
+
 `;
 
 export const MenuButton = styled.button`
@@ -26,7 +25,6 @@ export const UserProfile = styled.div`
   gap: 1rem;
 
   img {
-    width: 3.5rem;
     height: auto;
   }
 `;

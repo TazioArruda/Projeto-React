@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 // Estilização do container principal do Dashboard
 export const DashboardContainer = styled.div`
-  background-color: green; /* bg-zinc-light */
+  background-color: #ffffffff; /* bg-zinc-light */
   height: 100%;
   width: 100%;
 `;
