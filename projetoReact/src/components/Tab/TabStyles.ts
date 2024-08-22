@@ -5,6 +5,11 @@ export const Container = styled.div`
   padding: 16px;
 `;
 
+export const TablesContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; // Espaçamento entre as tabelas
+`;
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -12,13 +17,13 @@ export const Header = styled.div`
 `;
 
 export const Table = styled.table`
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
   background-color: white;
 `;
 
 export const TableHeader = styled.thead`
-  background-color: #34d399; /* Ajuste a cor conforme necessário */
+  background-color: #001C98; /* Ajuste a cor conforme necessário */
 `;
 
 export const TableHeaderCell = styled.th`
@@ -29,6 +34,13 @@ export const TableHeaderCell = styled.th`
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  &:first-child {
+    border-radius: 16px 0 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 16px 0 0;
+  }
 `;
 
 export const TableBody = styled.tbody`
@@ -39,6 +51,9 @@ export const TableBody = styled.tbody`
 export const TableRow = styled.tr`
   &:nth-child(even) {
     background-color: #f9fafb; /* Cor alternada de linha */
+  }
+  &:first-child td:last-child {
+    border-radius: 0 16px 0 0;
   }
 `;
 

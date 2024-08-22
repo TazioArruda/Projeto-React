@@ -1,4 +1,3 @@
-// src/components/Tab/Tab.tsx
 
 import {
   Container,
@@ -9,6 +8,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  TablesContainer,
 } from './TabStyles';
 
 export function Tab() {
@@ -18,14 +18,13 @@ export function Tab() {
         <span>Últimos usuários cadastrados</span>
         <span>Ver tudo</span>
       </Header>
-
+      <TablesContainer>
       <Table>
         <TableHeader>
           <tr>
-            <TableHeaderCell>Usuário</TableHeaderCell>
-            <TableHeaderCell>E-mail</TableHeaderCell>
-            <TableHeaderCell>WhatsApp</TableHeaderCell>
-            <TableHeaderCell>Tipo de usuário</TableHeaderCell>
+            <TableHeaderCell>ID</TableHeaderCell>
+            <TableHeaderCell>Produtos</TableHeaderCell>
+            <TableHeaderCell>Percentual</TableHeaderCell>
           </tr>
         </TableHeader>
         <TableBody>
@@ -33,17 +32,41 @@ export function Tab() {
             <TableCell>Conteúdo da Coluna 1</TableCell>
             <TableCell>Conteúdo da Coluna 2</TableCell>
             <TableCell>Conteúdo da Coluna 3</TableCell>
-            <TableCell>Conteúdo da Coluna 4</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Conteúdo da Coluna 1</TableCell>
             <TableCell>Conteúdo da Coluna 2</TableCell>
             <TableCell>Conteúdo da Coluna 3</TableCell>
-            <TableCell>Conteúdo da Coluna 4</TableCell>
           </TableRow>
           {/* Adicione mais linhas conforme necessário */}
         </TableBody>
       </Table>
+      <Table>
+        <TableHeader>
+          <tr>
+            <TableHeaderCell>ID</TableHeaderCell>
+            <TableHeaderCell>Produtos</TableHeaderCell>
+            <TableHeaderCell>Percentual</TableHeaderCell>
+          </tr>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell>Conteúdo da Coluna 1</TableCell>
+            <TableCell>Conteúdo da Coluna 2</TableCell>
+            <TableCell>Conteúdo da Coluna 3</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Conteúdo da Coluna 1</TableCell>
+            <TableCell>Conteúdo da Coluna 2</TableCell>
+            <TableCell>Conteúdo da Coluna 3</TableCell>
+          </TableRow>
+          {/* Adicione mais linhas conforme necessário */}
+        </TableBody>
+      </Table>
+      </TablesContainer>
     </Container>
+
+    
+    
   );
 }
