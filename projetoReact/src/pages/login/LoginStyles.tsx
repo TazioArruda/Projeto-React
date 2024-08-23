@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Image from '../../assets/imageLogin.jpeg';
 
+
 export const Container = styled.div`
   display: flex;
   width: 100vw;
@@ -57,6 +58,10 @@ export const InputWrapper = styled.div`
   gap: 1.5rem;
 `;
 
+export const InputContainer = styled.div`
+  position: relative;
+`;
+
 export const InputField = styled.input`
   width: 100%;
   padding: 1rem 0.75rem;
@@ -84,17 +89,16 @@ export const InputField = styled.input`
 
 export const Label = styled.label`
   position: absolute;
-  top: 1rem;
   left: 0.75rem;
-  padding: 10 0.25rem;
+  top: 1rem;
+  padding: 0 0.25rem;
   font-size: 0.875rem;
   color: #6b7280;
   background-color: #ffffff;
   transition: all 0.3s ease;
   pointer-events: none;
   z-index: 0;
-  transform: translateY(-90%);
-  white-space: nowrap;
+  transform-origin: left;
 `;
 
 export const CheckboxWrapper = styled.div`

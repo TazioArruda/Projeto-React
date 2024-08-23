@@ -46,6 +46,7 @@ const Login: React.FC = () => {
                   placeholder=" "
                 />
                   <Label htmlFor="email">Nome</Label>
+                  
               </div>
             
               <div className="relative">

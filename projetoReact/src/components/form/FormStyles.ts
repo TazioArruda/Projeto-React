@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10rem;
   padding: 2rem;
   background-color: #f9fafb;
   border-radius: 0.5rem;

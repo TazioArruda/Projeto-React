@@ -1,4 +1,5 @@
-import { CountContainer, StyledLink } from "./LinkPlansStyles";
+import { CountContainer, StyledLink } from "./LinkPransStyles";
+
 
 
 
