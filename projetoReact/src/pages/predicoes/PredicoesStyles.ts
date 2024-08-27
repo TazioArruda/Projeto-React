@@ -12,7 +12,11 @@ export const Title = styled.h1`
 export const PlansWrapper = styled.div`
   padding: 2rem; /* Equivalente a 'p-8' */
   display: flex;
-`;
+  flex-wrap: wrap; /* Permite que os cards quebrem a linha */
+  gap: 1rem; /* Espaçamento entre os cards */
+  max-height: 400px; /* Defina um limite de altura apropriado */
+  overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+`
 
 export const LinksContainer = styled.div`
   display: flex;

@@ -15,7 +15,7 @@ export function SideBarSmall() {
         </LogoContainer>
         <LinksContainer>
           <LinkSidebar url="/dashboard" icon={img1} size={20} />
-          <LinkSidebar url="/Predições" icon={img2} size={20} />
+          <LinkSidebar url="/predicoes" icon={img2} size={20} />
           <LinkSidebar url="/plans" icon={img3} size={20} />
         </LinksContainer>
       </Content>
