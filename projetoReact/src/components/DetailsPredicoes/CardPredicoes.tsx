@@ -15,6 +15,7 @@ const CardPredicoes: React.FC = () => {
       {/* Insira a TabelaPredicoes aqui */}
       <TabelaPredicoes />
     </CardContainer>
+    
   );
 };
 
