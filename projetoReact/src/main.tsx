@@ -4,11 +4,11 @@ import App from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/login/Login'
 
-import RegisterUsers from './pages/register/registerUsers.tsx'
 
 import Dashboard from './pages/dashBoard/Dashbord.tsx'
 import Predicoes from './pages/predicoes/Predicoes.tsx'
 import DetalhesPredicoes from './components/DetailsPredicoes/DetalhesPredicoes.tsx'
+import Produtos from './pages/produtos/Produtos.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,10 +19,7 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <Dashboard />
       },
-      {
-        path: '/Users',
-        element:<RegisterUsers/>
-      },
+   
       {
         path: '/predicoes',
         element:<Predicoes/>,
@@ -31,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/outra-pagina',
         element: <DetalhesPredicoes/>,
+      },
+      {
+        path: '/produtos', // Adicione a rota para Produtos
+        element: <Produtos />,
       }
     ]
   },

@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between; /* Adiciona espaço entre os cards */
+  align-items: flex-start; /* Alinha os itens ao topo */
+  gap: 20px; /* Ajuste o espaçamento entre os cards */
+  width: 100%; /* Ocupa toda a largura do contêiner */
+`;
+
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column; /* Alinha os itens em uma coluna */
@@ -22,6 +30,13 @@ export const Image = styled.img`
   padding: 10px; /* Ajuste o padding para aumentar a área de fundo */
   border-radius: 8px;
 `;
+export const Image1 = styled.img`
+  width: 40px; /* Ajuste o tamanho da imagem conforme necessário */
+  height: auto;
+  background-color: #FFE1E1;
+  padding: 10px; /* Ajuste o padding para aumentar a área de fundo */
+  border-radius: 8px;
+`;
 
 export const TitleWrapper = styled.div`
   display: flex;
@@ -37,6 +52,15 @@ export const Title = styled.h2`
   line-height: 32px;
   letter-spacing: 0.2px;
   color: #000000;
+  margin: 0;
+`;
+export const Title1 = styled.h2`
+  font-family: Sora, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.2px;
+  color: #FF3333;
   margin: 0;
 `;
 

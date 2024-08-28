@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   Wrapper,
@@ -12,16 +12,43 @@ import {
   Title,
   ButtonGroup,
   FilterButton,
-  IconWrapper, // Novo componente para estilização da imagem
+  IconWrapper,
 } from './TabStyles';
-
-// Importando as imagens
+// Importe a instância do Axios
 import produtosIcon from '../../assets/facial-cleanser.png';
 import clientesIcon from '../../assets/users.png';
+import { api } from '../../services/api';
 
 export function Tab() {
+  const [products, setProducts] = useState([]); // Estado para armazenar os produtos
+  const [clients, setClients] = useState([]); // Estado para armazenar os clientes
   const [activeFilter1, setActiveFilter1] = useState<'alta' | 'baixa' | null>(null);
   const [activeFilter2, setActiveFilter2] = useState<'alta' | 'baixa' | null>(null);
+
+  useEffect(() => {
+    // Função para buscar os dados dos produtos da API
+    const fetchProducts = async () => {
+      try {
+        const response = await api.get('http://localhost:3000/products'); // Substitua pelo endpoint correto
+        setProducts(response.data); // Armazena os produtos no estado
+      } catch (error) {
+        console.error('Erro ao buscar os dados dos produtos:', error);
+      }
+    };
+
+    // Função para buscar os dados dos clientes da API
+    const fetchClients = async () => {
+      try {
+        const response = await api.get('http://localhost:3000/customers'); // Substitua pelo endpoint correto
+        setClients(response.data); // Armazena os clientes no estado
+      } catch (error) {
+        console.error('Erro ao buscar os dados dos clientes:', error);
+      }
+    };
+
+    fetchProducts();
+    fetchClients();
+  }, []); // Dependência vazia para executar apenas uma vez ao montar o componente
 
   const handleFilterClick1 = (filter: 'alta' | 'baixa') => {
     setActiveFilter1(filter);
@@ -70,12 +97,13 @@ export function Tab() {
             </tr>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>Conteúdo da Coluna 1</TableCell>
-              <TableCell>Conteúdo da Coluna 2</TableCell>
-              <TableCell>Conteúdo da Coluna 3</TableCell>
-            </TableRow>
-            {/* Adicione mais linhas conforme necessário */}
+            {products.map((product: any) => (
+              <TableRow key={product.id}>
+                <TableCell>{product.id}</TableCell>
+                <TableCell>{product.name}</TableCell>
+                <TableCell>{product.percentual}%</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </Wrapper>
@@ -86,10 +114,8 @@ export function Tab() {
           <Title>
             <IconWrapper>
               <img src={clientesIcon} alt="Clientes" />
-             
             </IconWrapper>
             Clientes
-            
           </Title>
           <ButtonGroup>
             <FilterButton
@@ -119,12 +145,13 @@ export function Tab() {
             </tr>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>Conteúdo da Coluna 1</TableCell>
-              <TableCell>Conteúdo da Coluna 2</TableCell>
-              <TableCell>Conteúdo da Coluna 3</TableCell>
-            </TableRow>
-            {/* Adicione mais linhas conforme necessário */}
+            {clients.map((client: any) => (
+              <TableRow key={client.id}>
+                <TableCell>{client.id}</TableCell>
+                <TableCell>{client.name}</TableCell>
+                <TableCell>{client.percentual}%</TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </Wrapper>
