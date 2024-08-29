@@ -42,7 +42,7 @@ export function Tab() {
     // Função para buscar os dados dos clientes da API
     const fetchClients = async () => {
       try {
-        const response = await api.get('http://localhost:3000/customers'); // Substitua pelo endpoint correto
+        const response = await api.get('http://localhost:3000/customers');
         setClients(response.data); // Armazena os clientes no estado
         setFilteredClients(response.data); // Inicialmente, mostra todos os clientes
       } catch (error) {

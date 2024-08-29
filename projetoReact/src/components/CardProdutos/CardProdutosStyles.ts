@@ -2,9 +2,9 @@
 import styled from 'styled-components';
 
 export const CardProdutosContainer = styled.div`
-  width: 1582px;
+  width: 582px;
   height: 903px;
-  border-radius: 24px 0px 0px 0px;
+  border-radius: 24px;
   background: #FFFFFF;
   box-shadow: 0px 0px 25px 0px #A3A3A333;
   display: flex;
