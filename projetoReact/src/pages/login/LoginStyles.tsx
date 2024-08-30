@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Image from '../../assets/imageLogin.jpeg';
 
-
 export const Container = styled.div`
   display: flex;
   width: 100vw;
@@ -60,6 +59,7 @@ export const InputWrapper = styled.div`
 
 export const InputContainer = styled.div`
   position: relative;
+  margin-bottom: 1.5rem; /* Espaçamento inferior para separar mais os campos */
 `;
 
 export const InputField = styled.input`

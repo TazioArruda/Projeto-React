@@ -1,14 +1,22 @@
+// services/loginUser.ts
+import axios from 'axios';
 
-import { api } from "./api"
-import { setToken } from "./authClient"
-
-
- export interface LoginProps {
-    email:string
-    password: string
- }
-
-export async function loginUser({email,password}:LoginProps){
-    const response = await api.post(`public/register/login?email=${email}&password=${password}`)
-    await setToken(response.data.token)
+interface LoginData {
+  email: string;
+  password: string;
 }
+
+export const loginUser = async ({ email, password }: LoginData) => {
+  try {
+    const response = await axios.post('http://localhost:3000/login', {
+      user: email,
+      password,
+    });
+
+    // Retorna a resposta da API diretamente
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao fazer login:', error);
+    throw error;
+  }
+};

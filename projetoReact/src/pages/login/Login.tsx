@@ -1,9 +1,10 @@
+
 import { CreateAppContext } from '../../contexts/AppController';
 import { loginUser } from '../../services/loginUser';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { CheckboxWrapper, Container, ImageWrapper, InputField, InputWrapper, Label, LoginBox, LoginContainer, SubmitButton, Title } from './LoginStyles';
+import { CheckboxWrapper, Container, ImageWrapper, InputField, InputWrapper, Label, LoginBox, LoginContainer, SubmitButton, Title, InputContainer } from './LoginStyles';
 
 // Define a tipagem para os valores do formulário
 interface FormValues {
@@ -34,10 +35,8 @@ const Login: React.FC = () => {
             <h1>Realize seu login</h1>
           </Title>
           <InputWrapper>
-          
             <form onSubmit={handleSubmit(handleClick)}>
-              <div className="relative">
-              
+              <InputContainer>
                 <InputField
                   {...register('email')}
                   type="email"
@@ -45,12 +44,10 @@ const Login: React.FC = () => {
                   id="email"
                   placeholder=" "
                 />
-                  <Label htmlFor="email">Nome</Label>
-                  
-              </div>
-            
-              <div className="relative">
-              
+                <Label htmlFor="email">Nome</Label>
+              </InputContainer>
+
+              <InputContainer>
                 <InputField
                   {...register('password')}
                   type="password"
@@ -59,7 +56,7 @@ const Login: React.FC = () => {
                   placeholder=" "
                 />
                 <Label htmlFor="password">Senha</Label>
-              </div>
+              </InputContainer>
              
               <CheckboxWrapper>
                 <div>

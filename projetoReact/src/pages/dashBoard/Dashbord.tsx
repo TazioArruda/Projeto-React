@@ -4,12 +4,18 @@ import { Tab } from '../../components/Tab/Tab';
 
 function Dashboard() {
   return (
-    <DashboardContainer>
+    <div>
+       
+      <DashboardContainer>
+      
       <Presentation />
       <TabContainer>
         <Tab />
       </TabContainer>
     </DashboardContainer>
+
+    </div>
+    
   );
 }
 

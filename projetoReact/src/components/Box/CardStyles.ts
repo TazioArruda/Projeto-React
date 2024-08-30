@@ -13,7 +13,7 @@ export const CardContainer = styled.div`
 
 // Estilo para o wrapper do ícone, com cor personalizada
 export const IconWrapper = styled.div<{ color: string }>`
-  background-color: ${(props) => props.color}; /* Cor de fundo do ícone, definida pelo prop 'color' */
+ /* Cor de fundo do ícone, definida pelo prop 'color' */
   padding: 1rem; /* Espaçamento interno ao redor do ícone */
   border-radius: 50%; /* Forma circular para o wrapper do ícone */
 `;
@@ -27,12 +27,12 @@ export const InfoWrapper = styled.div`
 // Estilo para o nome exibido no card
 export const Name = styled.span`
   font-size: 0.875rem; /* Tamanho da fonte para o nome */
-  color: #ffffffff;
+  color: #FFFFFF; /* Cor do texto do nome */
 `;
 
 // Estilo para o valor exibido no card
 export const Value = styled.span`
   font-size: 1.5rem; /* Tamanho da fonte para o valor */
   font-weight: bold; /* Deixa o valor em negrito */
-  color: #ffffffff;
+  color: #FFFFFF; /* Cor do texto do valor */
 `;

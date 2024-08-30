@@ -13,31 +13,34 @@ import {
 } from './CardProdutosStyles';
 import leftArrowIcon from '../../assets/left-arrow.png'; 
 import rightArrowIcon from '../../assets/right-arrow1.png';
-import { api } from '../../services/api'; // Importe a instância do Axios
+import { api } from '../../services/api';
 
 const CardProdutos: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState<any[]>([]);
-  const [totalPages, setTotalPages] = useState(1); // Inicialize com um valor padrão
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    // Função para buscar os dados dos produtos da API
     const fetchProducts = async () => {
       try {
         const response = await api.get('http://localhost:3000/products');
-        setProducts(response.data.products); // Ajuste conforme a estrutura da resposta
-        // Se a resposta incluir informações sobre o total de páginas ou itens
-        // Exemplo:
-        const totalItems = response.data.totalItems; // Ajuste conforme a resposta da API
+        console.log('Resposta da API:', response.data);
+  
+        const productsData = response.data?.products || []; // Verifica se `response.data.products` existe
+        console.log('Dados dos produtos:', productsData);
+        setProducts(productsData);
+  
+        const totalItems = response.data?.totalItems || 0; // Verifica se `totalItems` existe
+        console.log('Total de itens:', totalItems);
         const itemsPerPage = 10; // Ajuste conforme o número de itens por página
         setTotalPages(Math.ceil(totalItems / itemsPerPage));
       } catch (error) {
         console.error('Erro ao buscar os dados dos produtos:', error);
       }
     };
-
+  
     fetchProducts();
-  }, [currentPage]); // Atualiza quando a página atual mudar
+  }, [currentPage]);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -63,14 +66,21 @@ const CardProdutos: React.FC = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {products.map((product: any) => (
-            <TableRow key={product.id}>
-              <TableCell>{product.id}</TableCell>
-              <TableCell>{product.name}</TableCell>
-              <TableCell>{product.status}</TableCell>
-              <TableCell>{product.percentage}%</TableCell>
+    
+          {products.length > 0 ? (
+            products.map((product: any) => (
+              <TableRow key={product.id}>
+                <TableCell>{product.id}</TableCell>
+                <TableCell>{product.name}</TableCell>
+                <TableCell>Disponível</TableCell>
+                <TableCell>{product.percentage}%</TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={4}>Nenhum produto encontrado</TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
 
