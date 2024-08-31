@@ -14,6 +14,8 @@ import {
 import leftArrowIcon from '../../assets/left-arrow.png'; 
 import rightArrowIcon from '../../assets/right-arrow1.png';
 import { api } from '../../services/api';
+import SearchProducts from '../SarchProd/SearchProducts';
+
 
 const CardProdutos: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,39 +25,64 @@ const CardProdutos: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await api.get('http://localhost:3000/products');
+        const response = await api.get('http://localhost:3000/products', {
+          params: {
+            _page: currentPage,
+            _limit: 10, // Limite de 10 itens por página
+          },
+        });
+
         console.log('Resposta da API:', response.data);
-  
-        const productsData = response.data?.products || []; // Verifica se `response.data.products` existe
-        console.log('Dados dos produtos:', productsData);
+
+        const productsData = response.data || [];
         setProducts(productsData);
-  
-        const totalItems = response.data?.totalItems || 0; // Verifica se `totalItems` existe
-        console.log('Total de itens:', totalItems);
-        const itemsPerPage = 10; // Ajuste conforme o número de itens por página
-        setTotalPages(Math.ceil(totalItems / itemsPerPage));
+
+        // Calcular total de páginas manualmente (200 itens no total / 10 itens por página)
+        const totalItems = 200; // Número total de produtos conhecidos
+        const pages = Math.ceil(totalItems / 10);
+        console.log('Total de páginas calculado:', pages);
+        setTotalPages(pages); // Atualiza o total de páginas
       } catch (error) {
         console.error('Erro ao buscar os dados dos produtos:', error);
+        setTotalPages(1); // Defina um valor padrão em caso de erro
       }
     };
-  
+
     fetchProducts();
-  }, [currentPage]);
+  }, [currentPage]); // A API é chamada sempre que currentPage muda
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      setCurrentPage(prevPage => {
+        console.log("Página anterior:", prevPage - 1);
+        return prevPage - 1;
+      });
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+      setCurrentPage(prevPage => {
+        console.log("Próxima página:", prevPage + 1);
+        return prevPage + 1;
+      });
     }
   };
 
+  const handleFilter = (query: string) => {
+    // Lógica para filtrar produtos com base na query
+    console.log('Filtrar produtos com:', query);
+    // Aqui você pode atualizar a lógica de filtragem, se necessário
+  };
+
+  useEffect(() => {
+    console.log('Página atual:', currentPage);
+    console.log('Total de páginas:', totalPages);
+  }, [currentPage, totalPages]);
+
   return (
     <CardProdutosContainer>
+      <SearchProducts onFilter={handleFilter} />
       <Table>
         <TableHeader>
           <TableRow>
@@ -66,14 +93,13 @@ const CardProdutos: React.FC = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-    
           {products.length > 0 ? (
             products.map((product: any) => (
               <TableRow key={product.id}>
                 <TableCell>{product.id}</TableCell>
                 <TableCell>{product.name}</TableCell>
                 <TableCell>Disponível</TableCell>
-                <TableCell>{product.percentage}%</TableCell>
+                <TableCell>{(product.percentage * 100).toFixed(2)}%</TableCell>
               </TableRow>
             ))
           ) : (

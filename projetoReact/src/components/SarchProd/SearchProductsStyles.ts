@@ -29,7 +29,7 @@ export const Input = styled.input`
 
 export const IconWrapper = styled.div`
   position: absolute; /* Posicionamento absoluto dentro do container */
-  right: 100%;
+  right: 600px;
   top: 50%;
   transform: translateY(-50%); /* Centralizar verticalmente */
   width: 24px;

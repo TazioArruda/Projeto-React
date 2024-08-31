@@ -1,12 +1,12 @@
+// SearchBar.tsx
 import React, { useState } from 'react';
-import { IconWrapper, Input, SearchContainer } from '../SarchProd/SearchProductsStyles';
+import { SearchContainer, Input, IconWrapper } from './SearchProductsStyles';
 
-
-interface SearchProductsProps {
+interface SearchBarProps {
   onFilter: (query: string) => void;
 }
 
-const SearchProducts: React.FC<SearchProductsProps> = ({ onFilter }) => {
+const SearchProducts: React.FC<SearchBarProps> = ({ onFilter }) => {
   const [query, setQuery] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

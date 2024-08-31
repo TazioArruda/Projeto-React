@@ -3,18 +3,18 @@ import styled from 'styled-components';
 
 export const CardProdutosContainer = styled.div`
   width: 982px;
-  height: 503px;
+  height: 503px;  /* Altura fixa para que o overflow funcione */
   border-radius: 24px;
   background: #FFFFFF;
   box-shadow: 0px 0px 25px 0px #A3A3A333;
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  /* Centraliza o componente vertical e horizontalmente */
   margin: 0 auto; /* Centraliza horizontalmente com margens automáticas */
-  position: relative; /* Necessário para o alinhamento vertical */
-  top: 35%; /* Move o componente para baixo 50% da altura do contêiner pai */
-  transform: translateY(-50%); /* Move o componente para cima para que fique centralizado verticalmente */
+  position: relative; 
+  top: 25%; 
+  transform: translateY(-50%); 
+  gap:20px;
 `;
 export const Table = styled.table`
   width: 100%;
@@ -33,6 +33,8 @@ export const TableHeader = styled.thead`
 `;
 
 export const TableHeaderCell = styled.th`
+  background-color: #001C98;
+  color: white;
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -42,6 +44,7 @@ export const TableBody = styled.tbody``;
 
 export const TableRow = styled.tr`
   border-bottom: 1px solid #ddd;
+  
 `;
 
 export const TableCell = styled.td`
